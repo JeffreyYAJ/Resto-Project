@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { quickFilters, restaurants } from '$lib/mock-data';
+  import { quickFilters, restaurants } from '#lib/mock-data';
 </script>
 
 <main class="mx-auto min-h-screen max-w-6xl px-4 pb-24 pt-6 text-slate-800 md:px-6">

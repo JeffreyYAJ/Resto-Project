@@ -1,8 +1,8 @@
 <script lang="ts">
-  import type { MenuItem } from '$lib/mock-data';
+  import type { MenuItem } from '#lib/mock-data';
 
   let { data } = $props();
-  const restaurant = data.restaurant;
+  const restaurant = $derived(data.restaurant);
 
   const formatPrice = (value: number) => `${value.toLocaleString('fr-CM')} FCFA`;
 
