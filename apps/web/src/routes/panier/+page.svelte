@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { cartItems } from '#lib/mock-data';
+  import { cartItems } from '../../lib/mock-data';
 
   const subtotal = cartItems.reduce<number>((sum, item) => sum + item.unitPrice * item.quantity, 0);
   const deliveryFee = 500;

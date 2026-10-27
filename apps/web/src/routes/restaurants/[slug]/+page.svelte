@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { MenuItem } from '#lib/mock-data';
+  import type { MenuItem } from '../../../lib/mock-data';
 
   let { data } = $props();
   const restaurant = $derived(data.restaurant);
