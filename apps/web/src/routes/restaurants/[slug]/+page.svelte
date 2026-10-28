@@ -70,7 +70,7 @@
     </div>
 
     <div class="mt-3 flex items-center gap-2 rounded-[18px] bg-[#dfe7e2] px-3 py-2 text-[13px] font-medium text-[#1f5d51]">
-      <span class="h-2.5 w-2.5 rounded-full bg-[#31b76b]" />
+      <span class="h-2.5 w-2.5 rounded-full bg-[#31b76b]"></span>
       <span>Ouverte (Prend les commandes)</span>
     </div>
 
