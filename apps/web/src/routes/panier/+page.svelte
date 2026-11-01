@@ -46,6 +46,6 @@
       </label>
     </div>
 
-    <a href="/commandes" class="mt-5 block rounded-2xl bg-amber-500 px-4 py-3 text-center text-base font-semibold text-white shadow-sm">Valider la commande</a>
+    <a href="/paiement" class="mt-5 block rounded-2xl bg-amber-500 px-4 py-3 text-center text-base font-semibold text-white shadow-sm">Valider la commande</a>
   </div>
 </main>
