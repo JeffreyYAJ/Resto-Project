@@ -1,6 +1,6 @@
 <script lang="ts">
-  let method: 'cash' | 'momo' = 'cash';
-  let txnRef = '';
+  let method = $state<'cash' | 'momo'>('cash');
+  let txnRef = $state('');
 
   const subtotal = 3000;
   const delivery = 300;
@@ -84,12 +84,19 @@
         </span>
       </div>
 
-      <button
-        type="button"
-        class={`flex w-full flex-col rounded-[18px] border p-4 text-left shadow-sm transition ${
+      <div
+        role="button"
+        tabindex="0"
+        class={`flex w-full cursor-pointer flex-col rounded-[18px] border p-4 text-left shadow-sm transition ${
           method === 'cash' ? 'border-[#a73a00] bg-[#fffaf7]' : 'border-transparent bg-[#f3efec]'
         }`}
-        on:click={() => selectMethod('cash')}
+        onclick={() => selectMethod('cash')}
+        onkeydown={(event) => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            selectMethod('cash');
+          }
+        }}
       >
         <div class="flex items-start justify-between gap-3">
           <div class="flex items-center gap-3">
@@ -111,14 +118,21 @@
         <div class="mt-3 rounded-[12px] bg-[#f4efec] p-3 text-[12px] leading-5 text-slate-600">
           Réglez <strong class="font-bold text-slate-900">3 300 FCFA</strong> en espèces directement au livreur lors de la remise de votre plat en amphi.
         </div>
-      </button>
+      </div>
 
-      <button
-        type="button"
-        class={`mt-3 flex w-full flex-col rounded-[18px] border p-4 text-left shadow-sm transition ${
+      <div
+        role="button"
+        tabindex="0"
+        class={`mt-3 flex w-full cursor-pointer flex-col rounded-[18px] border p-4 text-left shadow-sm transition ${
           method === 'momo' ? 'border-[#a73a00] bg-[#fffaf7]' : 'border-transparent bg-[#f3efec]'
         }`}
-        on:click={() => selectMethod('momo')}
+        onclick={() => selectMethod('momo')}
+        onkeydown={(event) => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            selectMethod('momo');
+          }
+        }}
       >
         <div class="flex items-start justify-between gap-3">
           <div class="flex items-center gap-3">
@@ -149,7 +163,7 @@
                   <div class="text-[18px] font-black tracking-[0.04em] text-slate-900">{merchantNumber}</div>
                   <div class="text-[11px] text-slate-500">Resto U Trésorerie Cameroun</div>
                 </div>
-                <button type="button" class="rounded-md bg-white px-2 py-1 text-[11px] font-bold text-slate-700" on:click={copyNumber}>Copier</button>
+                <button type="button" class="rounded-md bg-white px-2 py-1 text-[11px] font-bold text-slate-700" onclick={copyNumber}>Copier</button>
               </div>
             </div>
 
@@ -159,7 +173,7 @@
             </label>
           </div>
         {/if}
-      </button>
+      </div>
     </section>
 
     <section class="mt-5 rounded-[18px] bg-[#003820] p-4 text-white shadow-sm">
@@ -181,7 +195,7 @@
       <span class="text-slate-700">Paiement : {method === 'cash' ? 'Cash (Espèces)' : 'Mobile Money YI'}</span>
     </div>
 
-    <button type="button" class="flex w-full items-center justify-center gap-2 rounded-[14px] bg-[#a73a00] px-4 py-3 text-[15px] font-black text-white shadow-md" on:click={confirmOrder}>
+    <button type="button" class="flex w-full items-center justify-center gap-2 rounded-[14px] bg-[#a73a00] px-4 py-3 text-[15px] font-black text-white shadow-md" onclick={confirmOrder}>
       <span>🛍</span>
       <span>
         {method === 'cash' ? 'Valider la commande (3 300 FCFA) • Paiement Cash' : txnRef.trim() ? 'Confirmer le Mobile Money (3 300 FCFA)' : 'Saisir la référence SMS (3 300 FCFA)'}
